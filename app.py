@@ -31,7 +31,7 @@ st.set_page_config(page_title="Quản Lý Điểm Nhóm 1", page_icon="🏆", la
 # với app nhóm cũ. Nhớ SỬA LẠI dòng dưới đây thành đúng link mới đó (copy từ thanh địa chỉ
 # trình duyệt sau khi deploy xong) rồi cập nhật lại app.py trên GitHub 1 lần nữa — không thì mã
 # QR ở Trang chủ sẽ trỏ NHẦM sang app nhóm cũ.
-APP_URL = "https://nhom-1-lop97.streamlit.app/"
+APP_URL = "https://DAN-LINK-STREAMLIT-MOI-CUA-NHOM-1-VAO-DAY.streamlit.app/"
 
 # Nhật ký cập nhật web — mỗi khi thêm tính năng mới, chỉ cần thêm 1 dòng (ngày, mô tả)
 # vào ĐẦU danh sách này rồi cập nhật app.py; tab "🆕 Cập nhật" sẽ tự hiện ra.
@@ -2235,6 +2235,16 @@ with tab_home:
     MAT_KHAU_KHOA_DIEM = CAI_DAT_HE_THONG.get("mat_khau_khoa_diem", "")
     DA_MO_KHOA_DIEM = is_admin or st.session_state.get("da_mo_khoa_diem_bi_khoa", False)
 
+    # --- Mã QR mở nhanh --- không liên quan gì đến điểm số nên hiện LUÔN, kể cả khi Admin đang
+    # bật "Ẩn điểm số, chỉ hiện tên" ở chế độ bên dưới.
+    with st.expander("📱 Mã QR mở nhanh (để chia sẻ cho mọi người quét)"):
+        st.image(
+            make_qr_bytes(APP_URL),
+            caption="Quét mã này bằng camera điện thoại để mở app ngay",
+            width=200,
+        )
+        st.caption(APP_URL)
+
     if AN_DIEM_SO:
         # ============= CHẾ ĐỘ CHỈ HIỆN TÊN (Admin đã bật "Ẩn điểm số") =============
         # Không có điểm nào để tính hạng/xếp podium/vẽ biểu đồ — chỉ liệt kê tên, đơn giản và
@@ -2276,15 +2286,6 @@ with tab_home:
                         st.rerun()
                     else:
                         st.error("Sai mật khẩu rồi bạn ơi.")
-
-        # --- Mã QR mở nhanh ---
-        with st.expander("📱 Mã QR mở nhanh (để chia sẻ cho mọi người quét)"):
-            st.image(
-                make_qr_bytes(APP_URL),
-                caption="Quét mã này bằng camera điện thoại để mở app ngay",
-                width=200,
-            )
-            st.caption(APP_URL)
 
         # --- Lọc lịch sử theo khoảng thời gian ---
         with st.expander("📅 Lọc lịch sử theo khoảng thời gian"):
