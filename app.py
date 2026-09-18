@@ -31,7 +31,7 @@ st.set_page_config(page_title="Quản Lý Điểm Nhóm 1", page_icon="🏆", la
 # với app nhóm cũ. Nhớ SỬA LẠI dòng dưới đây thành đúng link mới đó (copy từ thanh địa chỉ
 # trình duyệt sau khi deploy xong) rồi cập nhật lại app.py trên GitHub 1 lần nữa — không thì mã
 # QR ở Trang chủ sẽ trỏ NHẦM sang app nhóm cũ.
-APP_URL = "https://DAN-LINK-STREAMLIT-MOI-CUA-NHOM-1-VAO-DAY.streamlit.app/"
+APP_URL = "https://nhom-1-lop97.streamlit.app/"
 
 # Nhật ký cập nhật web — mỗi khi thêm tính năng mới, chỉ cần thêm 1 dòng (ngày, mô tả)
 # vào ĐẦU danh sách này rồi cập nhật app.py; tab "🆕 Cập nhật" sẽ tự hiện ra.
